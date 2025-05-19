@@ -1,2 +1,2 @@
-# ReportesRMD_EPC_Clase3
+# Reportes_RMarkDown
 Primer Rmarkdown publicado 
