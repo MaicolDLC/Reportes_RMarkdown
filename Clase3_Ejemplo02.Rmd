@@ -1,0 +1,61 @@
+---
+title: "Regresión Logística"
+author: "Reportes con R - Clase 3"
+date: "2025-05-19"
+output: 
+  html_document: 
+    df_print: paged # Permite las tablas con paginación  
+    code_folding: hide # Permite ocultar el código R. (hide significa esconder) 
+    # Colocar echo=TRUE para mostrar el código, en la celda donde quiero mostrarlo. 
+    toc: yes # Para colocar el índice 
+    toc_float: 
+      collapse: yes # Para colocar los botones tipicos de R Markdown 
+    code_download: yes # Permite descargar el código (No es común) 
+    number_section: yes # Enumera los botones de índice 
+    theme: yeti # Para cambiar el diseño (tema) 
+---
+
+```{r setup, echo=TRUE, results='hide'}
+knitr::opts_chunk$set(echo = TRUE)
+# Código de prueba 
+# echo = FALSE, ejecuta el código, NO muestra el código, SI muestra el resultado. 
+# include = FALSE, ejecuta el código, NO muestra el código, NO muestra el resultado.
+# Uso los 2 (echo=FALSE e include=FALSE) cuando NO quiero mostra el código y tampoco el resultado. 
+print('Probando Código') 
+print("Aplico echo=TRUE, results='hide' cuando quiero mostrar el código pero no el resultado")
+print("Aplico echo=FALSE cuando quiero mostrar el resultado pero no el código")
+print("Aplico echo=FALSE, include=FALSE cuando no quiero mostrar el resultado ni el código")
+print("echo=FALSE depende de results (results='markup' o results='hide')")
+```
+
+# Introducción 
+
+La regresión Logística es uno de los métodos más comunes para predecir el valor 
+de una variable de respuesta $Y$ de tipo categórica, en función de un conjunto de 
+variables predictoras. Algunos ejemplos de esta variable $Y$ pueden ser : 
+
+* $Y=0$ o $Y=1$ 
+* $Y=$ pagó su crédito o $Y=$ no pagó su crédito 
+
+El objetivo de este tipo de modelos es el de estimar la probabilidad del evento 
+de interés. 
+
+$$P[Y=1 | X=x]$$ 
+
+Usaremos la función logit para estas cuentas : 
+
+$$P[Y=1|X=x] = \frac{exp(\beta^{T}x)}{1 + exp(\beta^{T}x)}$$
+
+
+# Ejemplo en R 
+
+```{r CargaLibrerías, echo=TRUE, results='hide', warning=FALSE, message=FALSE}
+library(ggplot2)
+library(corrplot)
+library(cat)
+library(knitr)
+library(PerformanceAnalytics)
+library(cowplot)
+print("warning=FALSE oculta los warnings")
+print("message=FALSE oculta los mensajes en general (menos los warnings)")
+```

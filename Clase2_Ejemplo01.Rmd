@@ -1,0 +1,31 @@
+---
+title: "Primeras Pruebas"
+author: "Reportes con R - Clase 2"
+date: "2025-05-18"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Como iniciar en R Markdown 
+1. Abrir R : 
+        File-> New File -> R Markdown 
+        
+2. Colocar título, autor, etc. 
+
+3. Guardar el Script con extensión .Rmd 
+
+4. Para empezar a realizar código R presionamos las teclas : ctrl + alt + i 
+
+5. Para ejecutar y visualizar : ctrl + shift + k 
+
+
+
+
+
+
+

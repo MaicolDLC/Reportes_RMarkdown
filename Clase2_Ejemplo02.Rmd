@@ -1,0 +1,154 @@
+---
+title: "Primeras Pruebas"
+author: "Reportes con R - Clase 2"
+date: "2025-05-18"
+output: 
+  html_document:
+    df_print: paged # Permite las tablas con paginación 
+    code_folding: hide # Permite ocultar el código R  
+---
+
+```{r setup, include=FALSE} 
+# {r setup, include=FALSE} Esto indica que se va a ejecutar comandos de R 
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introducción a R Markdown 
+Esta forma de crear "secciones" de LaTeX (H1 para HTML) es lo que me va a permitir 
+estructurar mi documento. 
+
+Un archivo de tipo *R Markdown* {`.Rmd`}, va a servir para escribir nuestro 
+reportes combinando texto y código de `R`. 
+
+El código de usando el lenguaje de programación `R` se agrega por intermedio 
+de "pedazos de código" 
+
+(*code chunks*) 
+
+```{r}
+# Esto es un comentario de R 
+# Una de las primeras cosas que uno de bebe de aprender a manipular es : 
+setwd('C:/Users/Michael/Desktop/Michael/REPORTES_CON_R')
+
+```
+
+Para ocultar líneas de código, debemos de modificar el preámbulo (parte inicial). 
+
+Por defecto : 
+
+title: "Primeras Pruebas"
+author: "Reportes con R - Clase 2"
+date: "2025-05-18"
+output: html_document
+
+Modificación : 
+
+title: "Primeras Pruebas"
+author: "Reportes con R - Clase 2"
+date: "2025-05-18"
+output: 
+  html_document:
+    df_print: paged
+    code_folding: hide 
+    
+    
+Luego de conocer como definir el directorio de trabajo, podemos concentrarnos 
+en aprender a realiar operaciones aritméticas. 
+
+```{r}
+# Usemos el operador exponenciación 
+4^3 
+```
+Más Código de `R`: 
+
+```{r}
+# Definición de variables 
+x<-5:25 
+# Generamos una variable usando rnorm 
+y<-rnorm(length(x), mean=3.8, sd=12.5)
+
+# Diagrama de dispersión 
+plot(x, y) 
+```
+
+La imagen aparece muy grande (y no está centrada), vamos a modificarla 
+```{r, fig.width=4, fig.height=4, fig.align='center'}
+# Definición de variables 
+x<-5:25 
+# Generamos una variable usando rnorm 
+y<-rnorm(length(x), mean=3.8, sd=12.5)
+
+# Diagrama de dispersión 
+plot(x, y) 
+```
+
+Para observar solamente el resultado, mas no el código, debemos de colocar echo=FALSE 
+```{r, fig.width=4, fig.height=4, fig.align='center', echo=FALSE }
+# Definición de variables 
+x<-5:25 
+# Generamos una variable usando rnorm 
+y<-rnorm(length(x), mean=3.8, sd=12.5)
+
+# Diagrama de dispersión 
+plot(x, y) 
+```
+
+# Formato del texto : 
+Algunas formas de manipular el formato de cualquier texto es : 
+
+- *Formato en cursiva*
+- **Formato en negrita** 
+- __*Formato en cursiva y negrita*__ 
+- ~~Texto erróneo~~ 
+- [Link del classroom](https://classroom.google.com/c/NTU2NzkxMDI4ODM5/m/NTczNjgzNDM0NDc3/details)
+- `Código en R <- 2022`     
+
+También (y al igual que HTML y de manera simular a LaTeX) podemos tener una 
+especie de jerarquía entre títulos, subtítulos y demás elementos internos : 
+
+# Primer título (# Primer título) : 
+
+Equivalente a un `section` de LaTeX o a un `H1` de HTML. 
+
+## Primer subtítulo (## Primer subtítulo) 
+
+### Elemento interno al primer subtítulo 
+
+#### Subtítulo del elemento anterior : 
+
+Equivalente a un `H4` de HTML. 
+
+##### Título interno H5 
+
+###### Título interno H6
+
+Este lenguaje de mercado también soporta algo de código $\LaTeX$. Es ya sabido que $\LaTeX$ 
+es muy bueno para agregar formulas/operaciones/objetos matemáticos tanto en una línea, 
+como por ejemplo ($a^2 + b^2 = c^2$), así como en su propio párrafo centrado. 
+
+$$ \lim_{x \to 0} \frac{\sin(x)}{x} = 1$$ 
+
+Areguemos imágenes desde una URL : 
+
+![Texto Alternativo](https://qph.cf2.quoracdn.net/main-qimg-ef07e38d6cdccf241e8d0a68b41d504b){style="display:block; margin:0 auto; width:30%"}
+
+# Acceso a las variables de los pedazos de código 
+
+```{r}
+hipotenusa <- 3^2 + 4^2 
+Cov_x_y <- round(cov(x, y), 3) 
+```
+La *hipotenusa* del triángulo rectángulo de catetos $3$ y $4$ tiene el valor de **`r hipotenusa`**. 
+Además la *covarianza* de las variables $x$ e $y$ es: `r Cov_x_y`. 
+
+# Uso de datos 
+
+Ya sabemos que para cargar datos y algunas funcionalidades de algunos paquetes 
+o librerías de `R` es necesario ejecutar algunas líneas como por ejemplo 
+
+```{r, message=FALSE}
+library(tidyverse)
+data1 <- read.csv("https://raw.githubusercontent.com/robintux/Datasets4StackOverFlowQuestions/refs/heads/master/AirBnB_Valoraciones.csv")
+head(data1, 10)
+```
+
